@@ -1,0 +1,175 @@
+# ===============================================
+# Collabio - Comprehensive Git Ignore File
+# ===============================================
+
+# ===============================================
+# Dependencies
+# ===============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ===============================================
+# Environment Files (CRITICAL - NEVER COMMIT)
+# ===============================================
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+.env.test
+.env*.local
+
+# ===============================================
+# Build Outputs
+# ===============================================
+dist/
+build/
+dist-ssr/
+out/
+.output/
+.vercel/
+.netlify/
+.next/
+
+# ===============================================
+# Development Tools
+# ===============================================
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IDEs
+.idea/
+*.swp
+*.swo
+*~
+
+# ===============================================
+# Operating System Files
+# ===============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+Desktop.ini
+
+# Linux
+*~
+
+# ===============================================
+# Logs
+# ===============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ===============================================
+# Runtime and Cache
+# ===============================================
+.cache/
+.parcel-cache/
+.npm/
+.eslintcache/
+.stylelintcache/
+*.tsbuildinfo
+.nyc_output/
+
+# ===============================================
+# Coverage and Testing
+# ===============================================
+coverage/
+*.lcov
+.nyc_output/
+jest-coverage/
+
+# ===============================================
+# Temporary Files
+# ===============================================
+*.local
+*.pid
+*.seed
+*.pid.lock
+
+# ===============================================
+# Database
+# ===============================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ===============================================
+# Deployment and Production
+# ===============================================
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Deployment keys and certificates
+*.pem
+*.key
+*.cert
+*.crt
+*.csr
+
+# ===============================================
+# Collabio Specific
+# ===============================================
+# Backend specific
+collabio_backend/dist/
+collabio_backend/.env
+collabio_backend/uploads/
+collabio_backend/logs/
+
+# Frontend specific  
+collabio_client/dist/
+collabio_client/.env.local
+collabio_client/storybook-static/
+
+# Development
+test-results/
+playwright-report/
+playwright/.cache/
+
+# ===============================================
+# Optional: Uncomment if using these tools
+# ===============================================
+# .storybook/build/
+# .turbo/
+# .rush/
+# .pnp.*
+
+# ===============================================
+# Security - Never commit these
+# ===============================================
+secrets/
+*.secret
+config/secrets.*
+.secrets/
+
+# ===============================================
+# Backup Files
+# ===============================================
+*.backup
+*.bak
+*.orig

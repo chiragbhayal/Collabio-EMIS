@@ -1,0 +1,47 @@
+{
+  "name": "collabio-platform",
+  "version": "1.0.0",
+  "description": "Collabio - A powerful B2B project management platform",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "install:backend": "cd collabio_backend && npm install",
+    "install:frontend": "cd collabio_client && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd collabio_backend && npm run dev",
+    "dev:frontend": "cd collabio_client && npm run dev",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd collabio_backend && npm run build",
+    "build:frontend": "cd collabio_client && npm run build",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd collabio_backend && npm start",
+    "start:frontend": "cd collabio_client && npm run preview",
+    "setup:env": "npm run setup:env:backend && npm run setup:env:frontend",
+    "setup:env:backend": "cd collabio_backend && copy .env.example .env",
+    "setup:env:frontend": "cd collabio_client && copy .env.example .env"
+  },
+  "keywords": [
+    "project-management",
+    "collaboration",
+    "B2B",
+    "productivity",
+    "teams"
+  ],
+  "author": "Chirag Bhayal",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/collabio"
+  },
+  "workspaces": [
+    "collabio_backend",
+    "collabio_client"
+  ]
+}
