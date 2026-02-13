@@ -33,7 +33,7 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000,
     secure: config.NODE_ENV === "production",
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: config.NODE_ENV === "production" ? "none" : "lax",
   })
 );
 app.use(passport.initialize());
@@ -41,10 +41,15 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: true,
+    origin: config.FRONTEND_ORIGIN || true,
     credentials: true,
   })
 );
+
+// Health check (used by Dockerfile healthcheck)
+app.get(`${BASE_PATH}/health`, (req: Request, res: Response) => {
+  res.status(200).json({ status: "ok" });
+});
 
 // Health Check Route
 app.get("/", (req: Request, res: Response) => {

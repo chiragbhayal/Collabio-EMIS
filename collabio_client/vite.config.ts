@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     visualizer({
       filename: "./dist/stats.html", // Optional: Generate stats file for bundle visualization
-      open: true,  // Opens stats visualization in the browser after build
+      open: false, // Don't try to open a browser in CI/build environments
     }),
   ],
   resolve: {
