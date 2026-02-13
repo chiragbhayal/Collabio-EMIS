@@ -9,7 +9,6 @@
     "start": "node dist/index.js",
     "seed": "ts-node src/seeders/role.seeder.ts",
     "lint": "eslint . --ext .ts",
-    "prepare": "husky install"
   },
   "keywords": [],
   "author": "Chirag Bhayal",
