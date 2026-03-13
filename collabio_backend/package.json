@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --files src/index.ts",
     "build": "tsc && node scripts/copy-package-json.cjs",
-    "start": "npm run dev",
+    "start": "node dist/index.js",
     "seed": "ts-node src/seeders/role.seeder.ts",
     "lint": "eslint . --ext .ts",
     "prepare": "node scripts/prepare-husky.cjs"

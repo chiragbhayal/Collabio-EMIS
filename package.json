@@ -18,7 +18,8 @@
     "start:frontend": "cd collabio_client && npm run preview",
     "setup:env": "npm run setup:env:backend && npm run setup:env:frontend",
     "setup:env:backend": "cd collabio_backend && copy .env.example .env",
-    "setup:env:frontend": "cd collabio_client && copy .env.example .env"
+    "setup:env:frontend": "cd collabio_client && copy .env.example .env",
+    "vercel-build": "npm run build:frontend"
   },
   "keywords": [
     "project-management",
@@ -30,6 +31,7 @@
   "author": "Chirag Bhayal",
   "license": "ISC",
   "devDependencies": {
+    "@vercel/node": "^5.3.11",
     "concurrently": "^8.2.2"
   },
   "engines": {
