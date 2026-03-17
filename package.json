@@ -35,12 +35,12 @@
     "concurrently": "^8.2.2"
   },
   "engines": {
-    "node": "20.x",
+    "node": ">=22 <25",
     "npm": ">=10.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/collabio"
+    "url": "https://github.com/chiragbhayal/Collabio-EMIS"
   },
   "workspaces": [
     "collabio_backend",
