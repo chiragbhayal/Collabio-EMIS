@@ -1,95 +1,143 @@
-# Collabio - Project Management Platform
+# Collabio Project Management Tool
 
-A powerful B2B project management platform to streamline teamwork and collaboration.
+Collabio is a full-stack project management platform built to help teams collaborate, manage workspaces, organize projects, and track tasks efficiently.
 
-## 🏗️ Project Structure
+## Overview
 
+- Frontend: React + TypeScript + Vite + Tailwind CSS
+- Backend: Node.js + Express + TypeScript + MongoDB
+- Auth: Google OAuth + session-based authentication
+- Deployment-ready for Vercel (monorepo setup)
+
+## Repository Structure
+
+```text
+Collabio-Project-Managment-Tool/
+|- collabio_client/      # Frontend (React + Vite)
+|- collabio_backend/     # Backend (Express + TypeScript)
+|- api/[...path].ts      # Vercel serverless entry for backend API
+|- scripts/              # Build/deploy helper scripts
+|- vercel.json           # Root Vercel configuration
+`- README.md
 ```
-collabio/
-├── collabio_backend/     # Node.js/Express/TypeScript Backend API
-├── collabio_client/      # React/TypeScript Frontend
-└── deployment/          # Deployment configurations
+
+## Tech Stack
+
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Express.js
+- MongoDB + Mongoose
+- Passport.js (Google OAuth)
+- TanStack Query
+
+## Prerequisites
+
+- Node.js (recommended: 22.x)
+- npm (recommended: 10+)
+- MongoDB instance (local or cloud)
+
+## Getting Started (Local Development)
+
+1. Clone the repository
+
+```bash
+git clone <your-repo-url>
+cd Collabio-Project-Managment-Tool
 ```
 
-## 🚀 Quick Start
+2. Install dependencies for all apps
 
-### Prerequisites
-- Node.js 18+
-- MongoDB (local or cloud)
+```bash
+npm run install:all
+```
 
-### Development Setup
+3. Create environment files
 
-1. **Clone and install dependencies:**
-   ```bash
-   git clone <repository-url>
-   cd Collabio-Project-Managment-Tool
-   npm run install:all
-   ```
+```bash
+npm run setup:env
+```
 
-2. **Setup environment files:**
-   ```bash
-   npm run setup:env
-   # Then edit .env files in both collabio_backend and collabio_client
-   ```
+4. Update environment variables in:
 
-3. **Start development environment:**
-   ```bash
-   npm run dev
-   ```
-   This will start:
-   - Backend API on http://localhost:8000
-   - Frontend on http://localhost:3000
+- `collabio_backend/.env`
+- `collabio_client/.env`
 
-## 📝 Environment Configuration
+5. Start development servers
 
-### Backend (.env)
-Copy from `.env.example` and fill in your values:
-- MongoDB connection string
-- Google OAuth credentials  
-- Session secret
-- Frontend URL for CORS
+```bash
+npm run dev
+```
 
-### Frontend (.env)
+Default local apps:
+
+- Backend API: `http://localhost:8000`
+- Frontend: `http://localhost:3000`
+
+## Environment Variables
+
+### Backend (`collabio_backend/.env`)
+
+Set values for:
+
+- `NODE_ENV`
+- `PORT`
+- `BASE_PATH`
+- `MONGO_URI`
+- `SESSION_SECRET`
+- `SESSION_EXPIRES_IN`
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_CALLBACK_URL`
+- `FRONTEND_ORIGIN`
+- `FRONTEND_GOOGLE_CALLBACK_URL`
+
+Note: `FRONTEND_ORIGIN` supports comma-separated values for multiple allowed origins.
+
+### Frontend (`collabio_client/.env`)
+
 ```env
 VITE_API_BASE_URL=http://localhost:8000/api
 ```
 
-## 🚀 Deployment
+## NPM Scripts (Root)
 
-### Backend (Render)
-1. Connect your GitHub repo to Render
-2. Set environment variables from your `.env` file
-3. Deploy!
+- `npm run install:all` - Install backend and frontend dependencies
+- `npm run dev` - Run backend and frontend in development mode
+- `npm run build` - Build backend and frontend
+- `npm run start` - Start backend and preview frontend build
+- `npm run setup:env` - Copy `.env.example` files to `.env`
+- `npm run vercel-build` - Build script for Vercel
 
-### Full-stack on Vercel (Frontend + API)
-This repo includes a Vercel Serverless Function at `api/[...path].ts` that runs the Express app from `collabio_backend`.
+## Deployment
 
-1. Import the repo root into Vercel (so `vercel.json` is used)
-2. Set backend environment variables in Vercel (Project Settings → Environment Variables):
-   - `MONGO_URI`
-   - `SESSION_SECRET`
-   - `SESSION_EXPIRES_IN`
-   - `GOOGLE_CLIENT_ID`
-   - `GOOGLE_CLIENT_SECRET`
-   - `GOOGLE_CALLBACK_URL` → `https://<your-domain>/api/auth/google/callback`
-   - `FRONTEND_ORIGIN` → `https://<your-domain>`
-   - `FRONTEND_GOOGLE_CALLBACK_URL` → `https://<your-domain>/google/oauth/callback`
+## Vercel (Full-stack)
+
+This repository is configured so the frontend and backend can be deployed from the root project.
+
+1. Import the root repository into Vercel.
+2. Configure backend environment variables in the Vercel project.
 3. Deploy.
 
-Notes:
-- The frontend defaults to calling the API at `/api` (no need to set `VITE_API_BASE_URL` for Vercel).
+Important backend env example:
 
-### Frontend-only on Vercel (API hosted elsewhere)
-1. Connect your repo to Vercel and deploy `collabio_client`
-2. Set `VITE_API_BASE_URL` to your deployed backend URL (e.g. `https://<your-backend-domain>/api`)
-3. Deploy
+- `GOOGLE_CALLBACK_URL=https://<your-domain>/api/auth/google/callback`
+- `FRONTEND_ORIGIN=https://<your-domain>`
+- `FRONTEND_GOOGLE_CALLBACK_URL=https://<your-domain>/google/oauth/callback`
 
-## 🛠️ Available Scripts
+If you use multiple frontend domains, set:
 
-| Command | Description |
-|---------|-------------|
-| `npm run install:all` | Install dependencies for both apps |
-| `npm run dev` | Start development servers |
-| `npm run build` | Build both applications |
-| `npm run start` | Start production servers |
-| `npm run setup:env` | Copy environment example files |
+- `FRONTEND_ORIGIN=https://domain-a.vercel.app,https://domain-b.vercel.app`
+
+## Render (Backend only)
+
+You can deploy only the backend from `collabio_backend/` and connect the frontend separately.
+
+## License
+
+This project is licensed under the ISC License. See the [LICENSE](LICENSE) file for details.
+
+## Developed By
+
+Chirag Bhayal
