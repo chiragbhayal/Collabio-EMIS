@@ -13,3 +13,5 @@ yarn-error.log
 # Ignore local build artifacts, but not the dist directory for deployment
 build/
 dist/
+.vercel
+.env*.local

@@ -7,7 +7,7 @@ Deployment steps (Vercel)
    - Build Command: `npm run build`
    - Output Directory: `dist`
 4. Set environment variables if your client reads any at build/runtime (e.g., API base URL):
-   - `VITE_API_URL` → `https://<your-backend-domain>/api`
+   - `VITE_API_BASE_URL` → `https://<your-backend-domain>/api` (optional; defaults to `/api`)
 5. Deploy and verify the frontend.
 
 Notes:

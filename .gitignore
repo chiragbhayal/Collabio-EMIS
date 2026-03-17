@@ -173,3 +173,4 @@ config/secrets.*
 *.backup
 *.bak
 *.orig
+.vercel
