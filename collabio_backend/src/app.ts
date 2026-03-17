@@ -53,9 +53,20 @@ export const createApp = () => {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  const allowedOrigins = config.FRONTEND_ORIGIN
+    ? config.FRONTEND_ORIGIN.split(",").map((o) => o.trim())
+    : [];
+
   app.use(
     cors({
-      origin: config.FRONTEND_ORIGIN || true,
+      origin: (origin, callback) => {
+        // Allow requests with no origin (e.g. mobile apps, curl)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+          return callback(null, true);
+        }
+        callback(new Error(`CORS: origin '${origin}' not allowed`));
+      },
       credentials: true,
     })
   );
